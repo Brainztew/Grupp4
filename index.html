@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+
+    <style>
+
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: black;
+        color: gold;
+        display: flex;
+    }
+    #movie {
+        max-width: 200px;
+    }
+
+    #movieInfo {
+        max-width: 600px;
+    }
+    #menu {
+        max-height: 20px;
+    }
+    </style>
+    
+</head>
+<body>
+    <div id ="menu">
+    <input id="searchInput" input="text">
+    <button onclick="searchMovies()">Sök</button>
+    <br><button id="top10Comedy">Top 10 komedi</button>
+    <br><button id="top10family">Top 10 familj</button>
+</div>
+    <div id="movie">
+    <ul id="movieList"></ul>
+</div>
+    <div id="movieInfo"></div>
+</body>
+</html>
