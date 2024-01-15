@@ -1,7 +1,9 @@
-
 let movieList = document.getElementById("movieList");
 let movieInfo = document.getElementById("movieInfo");
 let showTop20Comedy = document.getElementById("top20Comedy");
+let showTop20Drama = document.getElementById("top20Drama");
+
+
 
 console.log("hej från js");
 
@@ -18,6 +20,15 @@ showTop20Comedy.addEventListener("click", function () {
 });
 
 
+
+showTop20Drama.addEventListener("click", function () {
+    let genreId = 18;
+
+    let topDramaMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
+
+    fetchMovies(topDramaMoviesUrl);
+});
+
 function fetchMovies(url) {
     return fetch(url)
         .then(res => res.json())
@@ -27,7 +38,6 @@ function fetchMovies(url) {
 function searchMovies() {
     let searchTerm = document.getElementById("searchInput").value;
     let searchUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${searchTerm}&api_key=88d6f906b386ac47c004701d8f545df8`;
- 
     fetchMovies(searchUrl);
     let headLineSearch = document.createElement("h2");
     headLineSearch.innerText = "Sökresultat";
