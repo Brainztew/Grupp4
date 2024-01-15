@@ -1,0 +1,21 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: black;
+    color: gold;
+    display: flex;
+}
+#movie {
+    max-width: 200px;
+}
+
+#movieInfo {
+    max-width: 600px;
+}
+#menu {
+    max-height: 20px;
+}
+
+button {
+    border-radius: 10px;
+    background-color: blueviolet;
+}
