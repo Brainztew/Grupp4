@@ -1,8 +1,22 @@
 
 let movieList = document.getElementById("movieList");
 let movieInfo = document.getElementById("movieInfo");
+let showTop20Comedy = document.getElementById("top20Comedy");
 
 console.log("hej från js");
+
+
+showTop20Comedy.addEventListener("click", function () {
+    // Replace "28" with the desired genre ID (e.g., 28 for Action)
+    let genreId = 35;
+
+    // API endpoint to fetch top-rated movies of a specific genre
+    let topMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
+
+    // Call the fetchMovies function to fetch and display the top 10 movies
+    fetchMovies(topMoviesUrl);
+});
+
 
 function fetchMovies(url) {
     return fetch(url)
