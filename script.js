@@ -106,7 +106,7 @@ function printMovieInfo(movie) {
     movieImg.style.width = "500px";
     movieImg.src = "https://image.tmdb.org/t/p/original/" + movie.poster_path;
 
-    movieDiv.append(movieHeadline, movieText, movieImg, addFavoriteButton);
+    movieDiv.append(movieHeadline,addFavoriteButton, movieText, movieImg);
     movieInfo.appendChild(movieDiv);
 }
 
