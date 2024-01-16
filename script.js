@@ -14,6 +14,7 @@ console.log("hej från js");
 console.log(favoriteslist);
 
 showTop20Comedy.addEventListener("click", function () {
+    movieInfo.innerHTML = "";
     // Replace "28" with the desired genre ID (e.g., 28 for Action)
     let genreId = 35;
 
@@ -25,6 +26,7 @@ showTop20Comedy.addEventListener("click", function () {
 });
 
 showTop20Family.addEventListener("click", function () {
+    movieInfo.innerHTML = "";
     let genreId = 10751; 
 
     let topFamilyMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
@@ -34,6 +36,7 @@ showTop20Family.addEventListener("click", function () {
 
 
 showTop20Drama.addEventListener("click", function () {
+    movieInfo.innerHTML = "";
     let genreId = 18;
 
     let topDramaMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
@@ -42,6 +45,7 @@ showTop20Drama.addEventListener("click", function () {
 });
 
 showTop20Action.addEventListener("click", function () {
+    movieInfo.innerHTML = "";
     
     let genreId = 28;
     let topMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
@@ -49,6 +53,7 @@ showTop20Action.addEventListener("click", function () {
 });
 
 myFavorite.addEventListener("click", function () {
+    movieInfo.innerHTML = "";
     console.log("mina favoriter", favoriteslist);
     displayFavorites();
 });
@@ -63,6 +68,7 @@ function searchMovies() {
     let searchTerm = document.getElementById("searchInput").value;
     let searchUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${searchTerm}&api_key=88d6f906b386ac47c004701d8f545df8`;
     fetchMovies(searchUrl);
+    movieInfo.innerHTML = "";
 /*     let headLineSearch = document.createElement("h2");
     headLineSearch.innerText = "Sökresultat";
     movieList.appendChild(headLineSearch) */
