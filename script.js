@@ -93,9 +93,8 @@ function printMovieInfo(movie) {
 
     addFavoriteButton.addEventListener("click", () => {
         console.log(movie.id);
+        favoriteslist.push(movie); 
         localStorage.setItem("favoriteslist", JSON.stringify(favoriteslist));
-        favoriteslist.push(movie.id);
-
         console.log(favoriteslist);
     });
 
@@ -113,15 +112,6 @@ function printMovieInfo(movie) {
     movieInfo.appendChild(movieDiv);
 }
 function displayFavorites() {
-/*     movieList.innerHTML = "My Favorites: ";
-    if (movieList.length === 0) {
-        movieList.innerHTML += "No favorites yet.";
-    } else {
-        favoriteslist.forEach(movieId => {
-         
-            movieList.innerHTML += `${movieId}, `;
-        });
-    } */
     movieList.innerHTML = "";
     favoriteslist.forEach(movie => {
         let li = document.createElement("li");
@@ -133,6 +123,10 @@ function displayFavorites() {
 
         movieList.appendChild(li);
     });
+
+    window.onload = function () {
+        displayFavorites();
+    }
 }
 
 fetchMovies("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8");
