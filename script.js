@@ -2,10 +2,13 @@ let movieList = document.getElementById("movieList");
 let movieInfo = document.getElementById("movieInfo");
 let showTop20Comedy = document.getElementById("top20Comedy");
 let showTop20Drama = document.getElementById("top20Drama");
+let showTop20Family = document.getElementById("top20Family");
 
 
 
 console.log("hej från js");
+
+
 
 
 showTop20Comedy.addEventListener("click", function () {
@@ -19,6 +22,13 @@ showTop20Comedy.addEventListener("click", function () {
     fetchMovies(topMoviesUrl);
 });
 
+showTop20Family.addEventListener("click", function () {
+    let genreId = 10751; 
+
+    let topFamilyMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
+
+    fetchMovies(topFamilyMoviesUrl);
+});
 
 
 showTop20Drama.addEventListener("click", function () {
@@ -67,6 +77,9 @@ function printMovieInfo(movie) {
 
     let movieText = document.createElement("p");
     movieText.innerText = movie.overview;
+
+
+    
 
     let movieImg = document.createElement("img");
     movieImg.style.width = "500px";
