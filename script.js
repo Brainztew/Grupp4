@@ -1,6 +1,6 @@
 let movieList = document.getElementById("movieList");
 let movieInfo = document.getElementById("movieInfo");
-let favoriteslist = [];
+let favoriteslist = JSON.parse(localStorage.getItem("favoriteslist")) || [];
 let showTop20Comedy = document.getElementById("top20Comedy");
 let showTop20Drama = document.getElementById("top20Drama");
 let showTop20Action = document.getElementById("top20Action");
@@ -8,7 +8,7 @@ let showTop20Action = document.getElementById("top20Action");
 
 
 console.log("hej från js");
-
+console.log(favoriteslist);
 
 showTop20Comedy.addEventListener("click", function () {
     // Replace "28" with the desired genre ID (e.g., 28 for Action)
@@ -78,7 +78,7 @@ function printMovieInfo(movie) {
 
     addFavoriteButton.addEventListener("click", () => {
         console.log(movie.id);
-        
+        localStorage.setItem("favoriteslist", JSON.stringify(favoriteslist));
         favoriteslist.push(movie.id);
 
         console.log(favoriteslist);
