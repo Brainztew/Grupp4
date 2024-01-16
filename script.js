@@ -118,9 +118,6 @@ function printMovieInfo(movie) {
     let movieText = document.createElement("p");
     movieText.innerText = movie.overview;
 
-
-    
-
     let movieImg = document.createElement("img");
     movieImg.style.width = "500px";
     movieImg.src = "https://image.tmdb.org/t/p/original/" + movie.poster_path;
@@ -133,12 +130,20 @@ function displayFavorites() {
     favoriteslist.forEach(movie => {
         let li = document.createElement("li");
         li.innerText = movie.original_title;
-
+        let delBtn = document.createElement("button");
+        delBtn.innerText = "Ta bort";
         li.addEventListener("click", () => {
             printMovieInfo(movie);
         });
-
+        delBtn.addEventListener("click", () => {
+            console.log(movie.id);
+            const index = favoriteslist.indexOf(movie);
+            if (index !== -1) {
+                favoriteslist.splice(index, 1);}
+            localStorage.setItem("favoriteslist", JSON.stringify(favoriteslist));
+        })
         movieList.appendChild(li);
+        movieList.appendChild(delBtn);
     });
 
     window.onload = function () {
