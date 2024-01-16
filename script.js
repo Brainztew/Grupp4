@@ -66,6 +66,8 @@ clearLocalStorage.addEventListener("click", function () {
     console.log("Clear");
     localStorage.clear();
     favoriteslist = [];
+    displayFavorites();
+    
 });
 
 
@@ -141,6 +143,7 @@ function displayFavorites() {
             if (index !== -1) {
                 favoriteslist.splice(index, 1);}
             localStorage.setItem("favoriteslist", JSON.stringify(favoriteslist));
+            displayFavorites();
         })
         movieList.appendChild(li);
         movieList.appendChild(delBtn);
