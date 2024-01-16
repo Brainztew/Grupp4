@@ -29,14 +29,13 @@ function searchMovies() {
     let searchUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${searchTerm}&api_key=88d6f906b386ac47c004701d8f545df8`;
  
     fetchMovies(searchUrl);
-    let headLineSearch = document.createElement("h2");
+/*     let headLineSearch = document.createElement("h2");
     headLineSearch.innerText = "Sökresultat";
-    movieList.appendChild(headLineSearch)
+    movieList.appendChild(headLineSearch) */
 }
 
 function printMovieList(movies) {
     movieList.innerHTML = "";
-
     movies.forEach(movie => {
         let li = document.createElement("li");
         li.innerText = movie.original_title;
