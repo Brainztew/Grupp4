@@ -3,13 +3,15 @@ let movieInfo = document.getElementById("movieInfo");
 let favoriteslist = JSON.parse(localStorage.getItem("favoriteslist")) || [];
 let showTop20Comedy = document.getElementById("top20Comedy");
 let showTop20Drama = document.getElementById("top20Drama");
+let showTop20Family = document.getElementById("top20Family");
+
 let showTop20Action = document.getElementById("top20Action");
+
 
 
 
 console.log("hej från js");
 console.log(favoriteslist);
-
 
 showTop20Comedy.addEventListener("click", function () {
     // Replace "28" with the desired genre ID (e.g., 28 for Action)
@@ -22,6 +24,13 @@ showTop20Comedy.addEventListener("click", function () {
     fetchMovies(topMoviesUrl);
 });
 
+showTop20Family.addEventListener("click", function () {
+    let genreId = 10751; 
+
+    let topFamilyMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
+
+    fetchMovies(topFamilyMoviesUrl);
+});
 
 
 showTop20Drama.addEventListener("click", function () {
@@ -93,11 +102,14 @@ function printMovieInfo(movie) {
     let movieText = document.createElement("p");
     movieText.innerText = movie.overview;
 
+
+    
+
     let movieImg = document.createElement("img");
     movieImg.style.width = "500px";
     movieImg.src = "https://image.tmdb.org/t/p/original/" + movie.poster_path;
 
-    movieDiv.append(movieHeadline, movieText, movieImg, addFavoriteButton);
+    movieDiv.append(movieHeadline,addFavoriteButton, movieText, movieImg);
     movieInfo.appendChild(movieDiv);
 }
 function displayFavorites() {
