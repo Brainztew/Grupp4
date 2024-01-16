@@ -1,8 +1,12 @@
 let movieList = document.getElementById("movieList");
 let movieInfo = document.getElementById("movieInfo");
+let favoriteslist = [];
 let showTop20Comedy = document.getElementById("top20Comedy");
 let showTop20Drama = document.getElementById("top20Drama");
 let showTop20Family = document.getElementById("top20Family");
+
+let showTop20Action = document.getElementById("top20Action");
+
 
 
 
@@ -37,6 +41,13 @@ showTop20Drama.addEventListener("click", function () {
     let topDramaMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
 
     fetchMovies(topDramaMoviesUrl);
+});
+
+showTop20Action.addEventListener("click", function () {
+    
+    let genreId = 28;
+    let topMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
+    fetchMovies(topMoviesUrl);
 });
 
 function fetchMovies(url) {
@@ -74,6 +85,16 @@ function printMovieInfo(movie) {
     let movieDiv = document.createElement("div");
     let movieHeadline = document.createElement("h2");
     movieHeadline.innerText = movie.original_title;
+    let addFavoriteButton = document.createElement("button");
+    addFavoriteButton.innerText = ("add favorite");
+
+    addFavoriteButton.addEventListener("click", () => {
+        console.log(movie.id);
+        
+        favoriteslist.push(movie.id);
+
+        console.log(favoriteslist);
+    });
 
     let movieText = document.createElement("p");
     movieText.innerText = movie.overview;
@@ -85,7 +106,7 @@ function printMovieInfo(movie) {
     movieImg.style.width = "500px";
     movieImg.src = "https://image.tmdb.org/t/p/original/" + movie.poster_path;
 
-    movieDiv.append(movieHeadline, movieText, movieImg);
+    movieDiv.append(movieHeadline, movieText, movieImg, addFavoriteButton);
     movieInfo.appendChild(movieDiv);
 }
 
