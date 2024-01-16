@@ -4,7 +4,7 @@ let favoriteslist = JSON.parse(localStorage.getItem("favoriteslist")) || [];
 let showTop20Comedy = document.getElementById("top20Comedy");
 let showTop20Drama = document.getElementById("top20Drama");
 let showTop20Family = document.getElementById("top20Family");
-
+let showTop20Animation = document.getElementById("top20Animation");
 let showTop20Action = document.getElementById("top20Action");
 
 
@@ -47,7 +47,11 @@ showTop20Action.addEventListener("click", function () {
     let topMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
     fetchMovies(topMoviesUrl);
 });
-
+showTop20Animation.addEventListener("click", function () {
+    let genreId = 16;
+    let topMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
+    fetchMovies(topMoviesUrl);
+});
 myFavorite.addEventListener("click", function () {
     console.log("mina favoriter", favoriteslist);
     displayFavorites();
