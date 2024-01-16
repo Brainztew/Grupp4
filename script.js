@@ -10,6 +10,7 @@ let showTop20Action = document.getElementById("top20Action");
 console.log("hej från js");
 console.log(favoriteslist);
 
+
 showTop20Comedy.addEventListener("click", function () {
     // Replace "28" with the desired genre ID (e.g., 28 for Action)
     let genreId = 35;
@@ -36,6 +37,11 @@ showTop20Action.addEventListener("click", function () {
     let genreId = 28;
     let topMoviesUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8&with_genres=${genreId}`;
     fetchMovies(topMoviesUrl);
+});
+
+myFavorite.addEventListener("click", function () {
+    console.log("mina favoriter", favoriteslist);
+    displayFavorites();
 });
 
 function fetchMovies(url) {
@@ -93,6 +99,28 @@ function printMovieInfo(movie) {
 
     movieDiv.append(movieHeadline, movieText, movieImg, addFavoriteButton);
     movieInfo.appendChild(movieDiv);
+}
+function displayFavorites() {
+/*     movieList.innerHTML = "My Favorites: ";
+    if (movieList.length === 0) {
+        movieList.innerHTML += "No favorites yet.";
+    } else {
+        favoriteslist.forEach(movieId => {
+         
+            movieList.innerHTML += `${movieId}, `;
+        });
+    } */
+    movieList.innerHTML = "";
+    favoriteslist.forEach(movie => {
+        let li = document.createElement("li");
+        li.innerText = movie.original_title;
+
+        li.addEventListener("click", () => {
+            printMovieInfo(movie);
+        });
+
+        movieList.appendChild(li);
+    });
 }
 
 fetchMovies("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=88d6f906b386ac47c004701d8f545df8");
